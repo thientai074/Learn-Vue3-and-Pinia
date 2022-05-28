@@ -1,5 +1,6 @@
 <template>
   <div v-if="openModal" class="modalxxx">
+    User Id: {{user?._id}}
     <h1>Hello From Update</h1>
     <form action="">
       <input type="text" placeholder="Change" />
@@ -11,7 +12,7 @@
 <script lang="ts">
 export default {
   name: "ModalUpdate",
-  props: ["openModal"],
+  props: ["openModal", "user"],
   setup(props: any, context: any) {
     const handleCloseUpdateModal = (event: any) => {
       event.preventDefault();
