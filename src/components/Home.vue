@@ -1,13 +1,13 @@
 <template>
   <div>
-    <ModalUpdate :openModal="openModal" @closeModal="handleCloseModal" />
+    <ModalUpdate :openModal="openModal" :user="userToUpdate" @closeModal="handleCloseModal" />
     <h1>Admin Dashboard</h1>
     <div class="showUser">
       <Users
-        @customChange="logChange"
-        v-for="user in users"
-        :key="user._id"
-        :user="user"
+          @customChange="logChange"
+          v-for="user in users"
+          :key="user._id"
+          :user="user"
       />
     </div>
   </div>
@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { useUserStore } from "../store/user";
-import { computed, ref, watch } from "vue";
+import { computed, ref } from "vue";
 import MyInput from "./MyInput.vue";
 import { onMounted, watchEffect } from "vue";
 import Users from "./Users.vue";
@@ -42,6 +42,7 @@ export default {
     };
 
     const logChange = (value: any) => {
+      console.log(value)
       openModal.value = value.handleOpenModal;
       userToUpdate.value = value.userUpdate;
     };
